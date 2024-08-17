@@ -11,6 +11,6 @@ docker compose up
 | Sub-system  | URL                                                    |
 | ----------- | ------------------------------------------------------ |
 | Client      | <http://localhost:8080/>                               |
-| Swagger     | <http://localhost:5248/swagger/index.html>             |
+| Server      | <http://localhost:5248/>                               |
 | MailCatcher | <http://localhost:1080/>                               |
 | Postgres    | <postgres://postgres:mysecret@localhost:5432/postgres> |
