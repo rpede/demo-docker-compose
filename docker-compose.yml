@@ -1,0 +1,32 @@
+services:
+  client:
+    build: client/
+    depends_on:
+      - server
+    restart: always
+    ports:
+      - "8080:80"
+
+  server:
+    build: ./
+    depends_on:
+      - db
+      - mailcatcher
+    restart: always
+    env_file: local.env
+    ports:
+      - "5248:8080"
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    env_file: local.env
+    ports:
+      - "5432:5432"
+
+  mailcatcher:
+    image: dockage/mailcatcher
+    restart: always
+    ports:
+      - "1025:1025"
+      - "1080:1080"
