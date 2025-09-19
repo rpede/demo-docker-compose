@@ -10,9 +10,14 @@ services:
     depends_on:
       - db
     restart: always
+    environment:
+      - ConnectionStrings__AppDb="HOST=db;DB=postgres;UID=postgres;PWD=mysecret;PORT=5432;"
+      - AppOptions__JwtSecret="dfKDL0Rq26AEQhdHBcQkOvMNjj9S8/thdKhTVzm3UDWXfJ0gePCuWyf48VK9/hk1ID4VHqZjXpYhinms1r+Khg=="
     env_file: local.env
 
   db:
     image: postgres:16-alpine
     restart: always
-    env_file: local.env
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecret
