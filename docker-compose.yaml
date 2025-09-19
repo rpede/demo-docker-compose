@@ -4,8 +4,6 @@ services:
     depends_on:
       - server
     restart: always
-    ports:
-      - "8080:80"
 
   server:
     build: ./
@@ -13,12 +11,8 @@ services:
       - db
     restart: always
     env_file: local.env
-    ports:
-      - "5248:5248"
 
   db:
     image: postgres:16-alpine
     restart: always
     env_file: local.env
-    ports:
-      - "5432:5432"
