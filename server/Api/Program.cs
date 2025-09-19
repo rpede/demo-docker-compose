@@ -13,6 +13,8 @@ using Service.Draft;
 using Service.Interfaces;
 using Service.Repositories;
 using Service.Security;
+using System;
+using System.Collections;
 
 namespace Api;
 
@@ -131,9 +133,12 @@ public class Program
 
         app.UseMiddleware<ErrorHandlingMiddleware>();
 
-        // Print all environment variables
+        // Get all environment variables
         IDictionary envVars = Environment.GetEnvironmentVariables();
-        foreach (DictionaryEntry de in envVars) Console.WriteLine($"{de.Key} = {de.Value}");
+        foreach (DictionaryEntry de in envVars)
+        {
+            Console.WriteLine($"{de.Key} = {de.Value}");
+        }
 
         // Seed
         using (var scope = app.Services.CreateScope())
