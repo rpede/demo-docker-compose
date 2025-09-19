@@ -131,6 +131,10 @@ public class Program
 
         app.UseMiddleware<ErrorHandlingMiddleware>();
 
+        // Print all environment variables
+        IDictionary envVars = Environment.GetEnvironmentVariables();
+        foreach (DictionaryEntry de in envVars) Console.WriteLine($"{de.Key} = {de.Value}");
+
         // Seed
         using (var scope = app.Services.CreateScope())
         {
